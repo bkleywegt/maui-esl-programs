@@ -1,0 +1,24 @@
+@page "/SentenceScrambler"
+@using MauiEslPrograms.Helpers
+<h3>Sentence Scrambler</h3>
+<h4>Enter your sentences here</h4>
+<textarea @bind="WordsInput">
+</textarea>
+<button @onclick="ScrambleSentence">Scramble Sentences</button>
+<h4>Your scrambled sentences are displayed below</h4>
+<textarea @bind="JumbledOutput"></textarea>
+@code {
+    private string WordsInput { get; set; } = "";
+    private string JumbledOutput { get; set; } = "";
+    
+    private void ScrambleSentence()
+    {
+        var words = WordsInput.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        var scrambledWords = new List<string>();
+        foreach (var word in words)
+        {
+            scrambledWords.Add(Helper.FisherYatesShuffleSentence(word));
+        }
+        JumbledOutput = string.Join("\n", scrambledWords);
+    }
+}

@@ -1,0 +1,19 @@
+@page "/StoryShuffler"
+@using MauiEslPrograms.Helpers
+<h3>Story Shuffler</h3>
+<h4>Enter your story here</h4>
+<p>Break up each part of the story you want to shuffle (e.g. a sentence) with a new line.</p>
+<textarea @bind="StoryInput">
+</textarea>
+<button @onclick="ScrambleSentence">Shuffle Story</button>
+<h4>Your shuffled story is displayed below</h4>
+<textarea @bind="JumbledOutput"></textarea>
+@code {
+    private string StoryInput { get; set; } = "";
+    private string JumbledOutput { get; set; } = "";
+    
+    private void ScrambleSentence()
+    {
+        JumbledOutput = Helper.FisherYatesShuffleStory(StoryInput);
+    }
+}

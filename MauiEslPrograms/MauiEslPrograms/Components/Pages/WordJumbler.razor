@@ -1,0 +1,24 @@
+@page "/WordJumbler"
+@using MauiEslPrograms.Helpers
+<h3>Word Jumbler</h3>
+<h4>Enter your words here</h4>
+<textarea @bind="WordsInput">
+</textarea>
+<button @onclick="JumbleWords">Jumble Words</button>
+<h4>Your jumbled words are displayed below</h4>
+<textarea @bind="JumbledOutput"></textarea>
+@code {
+    private string WordsInput { get; set; } = "";
+    private string JumbledOutput { get; set; } = "";
+    
+    private void JumbleWords()
+    {
+        var words = WordsInput.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        var jumbledWords = new List<string>();
+        foreach (var word in words)
+        {
+            jumbledWords.Add(Helper.FisherYatesShuffle(word));
+        }
+        JumbledOutput = string.Join("\n", jumbledWords);
+    }
+}

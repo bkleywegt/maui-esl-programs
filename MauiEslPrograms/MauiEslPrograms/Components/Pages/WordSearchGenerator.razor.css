@@ -1,0 +1,22 @@
+textarea {
+    width: 100%;
+    padding: 1rem;
+    height: 300px;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+button {
+    margin-bottom: 1rem;
+}
+
+#txtWordSearch {
+    font-family: "Courier New", Courier, monospace;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}

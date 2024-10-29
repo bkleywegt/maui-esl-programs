@@ -1,0 +1,52 @@
+@page "/WordSearchGenerator"
+@using System.Runtime.InteropServices.JavaScript
+@using MauiEslPrograms.Helpers
+<h3>Word Search Generator</h3>
+<h4>Enter your words here</h4>
+<p>One word per line</p>
+<textarea @bind="WordsInput"></textarea>
+<div>
+    <label for="gridSize">Grid Size:</label>
+    <input id="gridSize" type="text" @bind="GridSize" />
+</div>
+<div>
+    <label for="reverseWords">Allow Reverse Words:</label>
+    <input id="reverseWords" type="checkbox" @bind="ReverseWords" />
+</div>
+<button @onclick="GenerateWordSearch">Generate Word Search</button>
+<h4>Your word search is displayed below</h4>
+<p class="error">@Error</p>
+<textarea @bind="WordSearch" id="txtWordSearch"></textarea>
+<p>NOTE: Keep the same font when you copy and paste the word search or the letters will go out of order.</p>
+@code {
+    private string WordsInput { get; set; } = "";
+    private string WordSearch { get; set; } = "";
+    private string GridSize { get; set; } = "10";
+    private bool ReverseWords { get; set; }
+    private string Error { get; set; } = "";
+    
+    private void GenerateWordSearch()
+    {
+        Error = "";
+        var words = WordsInput.Split('\n', StringSplitOptions.RemoveEmptyEntries).ToList();
+        
+        if (int.TryParse(GridSize, out int size))
+        {
+            try
+            {
+                WordSearch = WordSearchHelper.GenerateWordSearch(size, ReverseWords, words);
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
+        }
+        else
+        {
+            Error = "Please enter a valid grid size as a whole number.";
+        }
+
+        
+
+    }
+}
