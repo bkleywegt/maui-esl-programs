@@ -20,15 +20,16 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
         <Nullable>enable</Nullable>
+        <MacAppStore>false</MacAppStore> <!-- Set to true if you are submitting to the Mac App Store -->
 
         <!-- Display name -->
-        <ApplicationTitle>MauiEslPrograms</ApplicationTitle>
+        <ApplicationTitle>MAUI ESL Programs</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.mauieslprograms</ApplicationId>
+        <ApplicationId>com.bkleywegt.mauieslprograms</ApplicationId>
 
         <!-- Versions -->
-        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <ApplicationDisplayVersion>0.8</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
 
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
